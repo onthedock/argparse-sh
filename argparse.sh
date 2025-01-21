@@ -99,7 +99,8 @@ show_help() {
 # Function to check for help option
 # Usage: check_for_help "$@"
 check_for_help() {
-    for arg in "$@"; do
-        [[ $arg == "-h" || $arg == "--help" ]] && { show_help; exit 0; }
-    done
+    if (echo "$@" | grep -- "-h" > /dev/null) || (echo "$@" | grep -- "--help" > /dev/null); then
+        show_help
+        exit 0
+    fi
 }
