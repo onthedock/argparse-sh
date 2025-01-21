@@ -49,6 +49,7 @@ define_arg() {
 # Function to parse command-line arguments
 # Usage: parse_args "$@"
 parse_args() {
+    check_for_help $@
     while [[ $# -gt 0 ]]; do
         key="$1"
         key="${key#--}" # Remove the '--' prefix
@@ -99,7 +100,8 @@ show_help() {
 # Function to check for help option
 # Usage: check_for_help "$@"
 check_for_help() {
-    for arg in "$@"; do
-        [[ $arg == "-h" || $arg == "--help" ]] && { show_help; exit 0; }
-    done
+    if (echo "$@" | grep -- "-h" > /dev/null) || (echo "$@" | grep -- "--help" > /dev/null); then
+        show_help
+        exit 0
+    fi
 }
