@@ -1,5 +1,5 @@
 #/usr/bin/env bash
-SCRIPT_DESCRIPTION="argspars3.sh is a Bash 3 library for defining script arguments"
+SCRIPT_DESCRIPTION="argsparse3.sh is a Bash 3 library for defining script arguments"
 FLAG_BEHAVIOUR="Add the flag to set the argument to 'true' (don't use '--flag true')"
 
 ARGS_PROPERTIES=()
