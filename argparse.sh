@@ -49,6 +49,7 @@ define_arg() {
 # Function to parse command-line arguments
 # Usage: parse_args "$@"
 parse_args() {
+    check_for_help $@
     while [[ $# -gt 0 ]]; do
         key="$1"
         key="${key#--}" # Remove the '--' prefix
