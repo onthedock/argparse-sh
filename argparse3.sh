@@ -6,9 +6,9 @@ ARGS_PROPERTIES=()
 
 _NULL_VALUE_="null"
 _DEFAULT_=1
-_TYPE_=2
-_REQUIRED_=3
-_HELP_=4
+_HELP_=2
+_TYPE_=3
+_REQUIRED_=4
 
 show_help() {
     local args=( "${ARGS_PROPERTIES[@]}" )
@@ -46,17 +46,16 @@ check_required() {
 define_arg() {
     arg_name=$1
     arg_value=${2:-"$_NULL_VALUE_"}
-    arg_type=${3:-"string"}
-    arg_required=${4:-"optional"}
-    arg_help=${5:-""}
+    arg_help=${3:-""}
+    arg_type=${4:-"string"}
+    arg_required=${5:-"optional"}
     if [[ "$arg_required" == "required" ]]; then
         arg_value="$_NULL_VALUE_"
     fi
-    ARGS_PROPERTIES+=("$arg_name" "$arg_value" "$arg_type" "$arg_required" "$arg_help")
+    ARGS_PROPERTIES+=("$arg_name" "$arg_value" "$arg_help" "$arg_type" "$arg_required")
     if [[ "$arg_value" == "$_NULL_VALUE_" ]]; then
         arg_value=""
     fi
-    
     export "$arg_name"="$arg_value"
 }
 
@@ -93,6 +92,6 @@ parse_args() {
                 esac
             fi
         done
-        break
+        # break
     done
 }
