@@ -10,6 +10,12 @@ _HELP_=2
 _TYPE_=3
 _REQUIRED_=4
 
+# Function to set the script description
+# Usage: set_description "Description text"
+set_description() {
+    SCRIPT_DESCRIPTION="$1"
+}
+
 show_help() {
     local args=( "${ARGS_PROPERTIES[@]}" )
     local prefix="   "
