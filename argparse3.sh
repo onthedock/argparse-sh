@@ -67,10 +67,7 @@ define_arg() {
 
 parse_args() {
     # Check for 'help' flags
-    if (echo "$@" | grep -- "-h" > /dev/null) || (echo "$@" | grep -- "--help" > /dev/null); then
-        show_help
-        exit 0
-    fi
+    check_for_help $@
     # Check for missing required arguments
     check_required "$@"
     while [[ $# -gt 0 ]]; do
@@ -100,4 +97,13 @@ parse_args() {
         done
         shift # Skip undefined argument
     done
+}
+
+# Function to check for help option
+# Usage: check_for_help "$@"
+check_for_help() {
+    if (echo "$@" | grep -- "-h" > /dev/null) || (echo "$@" | grep -- "--help" > /dev/null); then
+        show_help
+        exit 0
+    fi
 }
