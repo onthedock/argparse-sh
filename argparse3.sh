@@ -98,6 +98,6 @@ parse_args() {
                 esac
             fi
         done
-        # break
+        shift # Skip undefined argument
     done
 }
